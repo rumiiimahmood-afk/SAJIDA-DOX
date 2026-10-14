@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json</title>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>STUDENT ID</th>
+                <th>STUDENT NAME</th>
+                <th>STUDENT GUARDIAN</th>
+                <th>STUDENT EMAIL</th>
+            </tr>
+        </thead>
+
+        <tbody id="tablebody">
+        </tbody>
+    </table>
+</body>
+<script>
+    var tablebody = document.getElementById("tablebody")
+    async function datafetch() 
+    {
+        var response = await fetch("http://127.0.0.1:5500/practice/databas.json")
+        var json = response.json();
+        json.then((data)=>{
+var records = data.Students;
+
+for(let i= 0 ; i < records.length;i++){
+tablebody.innerHTML += 
+`
+<td>${records[0].StudentId}<td>
+<td>${records[1].StudentName}<td>
+<td>${records[2].StudentGaurdian}<td>
+<td>${records[2].StudentEmail}<td>
+    `;
+}
+
+        });
+    }   
+    datafetch();                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>
